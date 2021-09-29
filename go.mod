@@ -1,3 +1,3 @@
-module go_code/jvmgo
+module jvmgo
 
 go 1.17

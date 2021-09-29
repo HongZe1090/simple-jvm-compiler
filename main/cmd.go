@@ -19,9 +19,13 @@ type Cmd struct {
 func parseCmd() *Cmd {
 	cmd := &Cmd{} //初始化Cmd结构体
 
+	// flag实现了命令行参数的解析
+	// 第二个参数即是 -后面的值，后面依次是arg[]数组中的值
+	// flag.Prase 来解析命令行参数写入注册的flag里。
 	flag.Usage = printUsage //在解析失败时调用printUsage
 	flag.BoolVar(&cmd.helpFlag, "help", false, "print help message")
 	flag.BoolVar(&cmd.helpFlag, "?", false, "print help message")
+	flag.BoolVar(&cmd.versionFlag, "version", false, "print version and exit")
 	flag.StringVar(&cmd.cpOption, "classpath", "", "classpath")
 	flag.StringVar(&cmd.cpOption, "cp", "", "classpath")
 	flag.Parse()
