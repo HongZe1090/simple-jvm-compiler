@@ -1,3 +1,4 @@
+//entry接口
 package classpath
 
 import (

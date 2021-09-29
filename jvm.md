@@ -20,7 +20,11 @@ Java是通过java虚拟机来装载和执行编译文件（class文件）的，j
 
 #### 二 搜索class
 ##### 1.什么是类路径
-Java类路劲告诉java解释器和javac编译器去哪里找到要执行和导入的类。
+Java类路劲告诉java解释器和javac编译器去哪里找到要执行和导入的类，类路径由启动类路径，扩展类路径和用户类路径构成
+
+##### 2.package classpath解析（详情见注释） 
+- Entry接口由俩个方法，readClass()负责寻找和加载类路径，string()用于返回变量的字符串表示。
+- Entry接口有四个实现，分别是 DirEntry，ZipEntry，CompositeEntry，WildcarEntry
 
 #### 三 解析class文件
 ##### 1.理解JAVA Class文件
