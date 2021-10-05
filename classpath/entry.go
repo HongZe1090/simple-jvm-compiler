@@ -7,6 +7,7 @@ import (
 )
 
 // :(linux/unix) or ;(windows)
+// pathListSeparator存放分隔符 ";"
 const pathListSeparator = string(os.PathListSeparator)
 
 type Entry interface {
@@ -15,6 +16,7 @@ type Entry interface {
 	String() string
 }
 
+// 返回值为接口的函数
 func newEntry(path string) Entry {
 	if strings.Contains(path, pathListSeparator) {
 		return newCompositeEntry(path)

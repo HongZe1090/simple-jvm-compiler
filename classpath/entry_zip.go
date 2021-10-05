@@ -11,6 +11,7 @@ type ZipEntry struct {
 	absPath string
 }
 
+// 返回绝对地址
 func newZipEntry(path string) *ZipEntry {
 	absPath, err := filepath.Abs(path)
 	if err != nil {
@@ -24,8 +25,9 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-
+	// defer确保每次打开的文件都能被关闭
 	defer r.Close()
+	// 遍历压缩包中的文件
 	for _, f := range r.File {
 		if f.Name == className {
 			rc, err := f.Open()

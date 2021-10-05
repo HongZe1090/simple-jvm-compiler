@@ -17,14 +17,20 @@ Java是通过java虚拟机来装载和执行编译文件（class文件）的，j
 - 在main函数中对cmd结构体中的各项属性进行解析并判断
 
 
-
 #### 二 搜索class
 ##### 1.什么是类路径
-Java类路劲告诉java解释器和javac编译器去哪里找到要执行和导入的类，类路径由启动类路径，扩展类路径和用户类路径构成
+- Java类路劲告诉java解释器和javac编译器去哪里找到要执行和导入的类，类路径由启动类路径，扩展类路径和用户类路径构成
+- 设置Java类路径，在运行时进行，每次启动 Java 应用程序和 JVM，都要指定类路径。运行时使用 -cp 选项来指定类路径，这里的运行时是指启动应用程序和 JVM 时。
+例如
+C:/Cloudscape_10.0/demo/programs/simple>java -cp %CLOUDSCAPE_INSTALL%/lib/cs.jar; SimpleApp
 
 ##### 2.package classpath解析（详情见注释） 
 - Entry接口由俩个方法，readClass()负责寻找和加载类路径，string()用于返回变量的字符串表示。
 - Entry接口有四个实现，分别是 DirEntry，ZipEntry，CompositeEntry，WildcarEntry
+- 搜索过程
+  - 传入类名，调用Abs方法获取绝对路径。
+  - 根据绝对路径打开后遍历文件获取需要的类。
+  - 
 
 #### 三 解析class文件
 ##### 1.理解JAVA Class文件
