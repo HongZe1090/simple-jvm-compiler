@@ -27,7 +27,7 @@ func (self *ZipEntry) readClass(className string) ([]byte, Entry, error) {
 	}
 	// defer确保每次打开的文件都能被关闭
 	defer r.Close()
-	// 遍历压缩包中的文件
+	// 遍历压缩包中的文件 划水
 	for _, f := range r.File {
 		if f.Name == className {
 			rc, err := f.Open()
