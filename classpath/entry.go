@@ -11,7 +11,7 @@ import (
 const pathListSeparator = string(os.PathListSeparator)
 
 type Entry interface {
-	// className: fully/qualified/ClassName.class
+	// className: fully/qualified/ClassName.class  type标识别名定义，下面inferface和Entry等价
 	readClass(className string) ([]byte, Entry, error)
 	String() string
 }
