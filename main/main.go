@@ -21,15 +21,18 @@ func main() {
 }
 
 func startJVM(cmd *Cmd) {
+	// 将cmd命令行中的参数输入到cp（classpath结构体）中进行解析
+	// 在此处先用classpath文件中的Prase函数解析基础类路径，在用readclass函数解析类，此时基础类路径已经保存在classpath中的cp缓存中
 	cp := classpath.Parse(cmd.XjreOption, cmd.cpOption)
 	fmt.Printf("classpath:%v class:%v args: %v\n", cp, cmd.class, cmd.args)
 
 	className := strings.Replace(cmd.class, ".", "/", -1)
+	fmt.Println(className)
 
 	classData, _, err := cp.ReadClass(className)
 
 	if err != nil {
-		fmt.Print("Could not find or load main class %s \n", cmd.class)
+		fmt.Printf("Could not find or load main class %s \n", cmd.class)
 		return
 	}
 
